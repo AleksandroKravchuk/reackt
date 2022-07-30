@@ -1,0 +1,35 @@
+{
+  "contries": [
+    {
+      "id": "1",
+      "title": "Ukraine",
+      "population": "124524623",
+      "image": "/src/IMG/Ukraine.jpg"
+    },
+    {
+      "id": "2",
+      "title": "America",
+      "population": "7342444232",
+      "image": "/src/IMG/America.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Germany",
+      "population": "3563644",
+      "image": "/src/IMG/Germany.jpg"
+    },
+    {
+      "id": "4",
+      "title": "England",
+      "population": "945244",
+      "image": "/src/IMG/England.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Poland",
+      "population": "945244",
+      "image": "/src/IMG/England.jpg"
+    }
+  ],
+  "headers": { "Content-Type": "aplication/json" }
+}
