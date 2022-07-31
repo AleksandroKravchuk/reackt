@@ -1,8 +1,9 @@
 // import PropTypes from 'prop-types';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 // import { ReactQueryDevtools } from 'react-query/devtools';
+// import TypeScript from 'typescript';
 import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { fetchCountry } from '../server/country';
 const queryClient = new QueryClient();
 
@@ -15,7 +16,7 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-
+fetchCountry().then(({ data }) => console.log(data));
 // function Example() {
 //   const { isLoading, error, data } = useQuery('results', () => {
 //     axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`);
@@ -36,30 +37,33 @@ export default function App() {
 // }
 // const queryClient = useQueryClient();
 function Todos() {
-  console.log(fetchCountry.getAll);
-  const [contries, setContries] = useState([]);
-  const { isLoading, data, error, status } = useQuery('country list', fetchCountry.getAll(), {
-    onSuccess: data => setContries(data),
-  });
+  // const [contries, setContries] = useState([]);
+  const { isLoading, data, error, status } = useQuery(
+    'country list',
+    fetchCountry,
+    // {
+    // onSuccess: data => setContries(data),
+    // }
+  );
   console.log(data);
   console.log(isLoading);
   console.log(error);
   console.log(status);
-  // return (
-  //   <>
-  //     {isLoading && <span>Loading...</span>}
-  //     {error && <p>elements no found</p>}
-  //     {data && (
-  //       <ul>
-  //         {data.map(country => (
-  //           <li key={country.id}>
-  //             <h3>{country.title}</h3>
-  //             <p>{country.population}</p>
-  //             <img src={country.image} alt="foto cantry"></img>
-  //           </li>
-  //         ))}
-  //       </ul>
-  //     )}
-  //   </>
-  // );
+  return (
+    <>
+      {isLoading && <span>Loading...</span>}
+      {error && <p>elements no found</p>}
+      {data && (
+        <ul>
+          {data.map(country => (
+            <li key={country.id}>
+              <h3>{country.title}</h3>
+              <p>{country.population}</p>
+              <img src={country.image} alt="foto cantry"></img>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
 }
